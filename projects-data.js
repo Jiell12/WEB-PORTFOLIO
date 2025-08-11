@@ -91,6 +91,29 @@ const projectsData = [
         ],
         "status": "Completed",
         "category": "static-website"
+    },
+    {
+        "id": 1754902423978,
+        "name": "ClosetX",
+        "description": "ClosetX is a client-based mobile app designed to enhance the clothes shopping experience by allowing users to browse a wide selection of apparel and try them on virtually using augmented reality (AR). The app’s AR try-on feature lets users see how clothes fit and look on them in real-time through their phone’s camera, making shopping more interactive and personalized. ClosetX combines convenience with cutting-edge technology to help users make confident fashion choices without needing to visit a store. This project showcases skills in mobile app design, AR integration, and user-centered shopping solutions.\n\n",
+        "date": "2025-05-09",
+        "purpose": "The purpose of ClosetX is to provide users with a convenient and interactive way to shop for clothes by using augmented reality to virtually try on outfits before making a purchase. This helps reduce the uncertainty of online shopping, enhances user confidence, and creates a more personalized shopping experience.",
+        "screenshots": [
+            "closet1.png",
+            "closet2.png",
+            "closet3.png",
+            "closet4.png",
+            "closet5.png",
+            "closet6.png",
+            "closet7.png",
+            "closet8.png"
+        ],
+        "technologies": [
+            "FLUTTER",
+            "SDK"
+        ],
+        "status": "Completed",
+        "category": "mobile-app"
     }
 ];
 
