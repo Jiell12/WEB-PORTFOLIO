@@ -114,6 +114,23 @@ const projectsData = [
         ],
         "status": "Completed",
         "category": "mobile-app"
+    },
+    {
+        "id": 1754907058006,
+        "name": "AI MODEL EXCEL DATA READER",
+        "description": "This app lets users easily search through data stored in an Excel file without any hassle. It’s designed to be simple and fast, so finding exactly what you need takes just a few clicks. Whether the spreadsheet is big or small, the app makes browsing and filtering data smooth and straightforward. It’s a great example of combining practical tools with an easy-to-use design.",
+        "date": "2025-06-22",
+        "purpose": "The purpose of this app is to make it easy for anyone to quickly find information inside an Excel file without needing to open or scroll through the whole spreadsheet. It helps save time and reduces frustration by providing a fast, straightforward way to search and access important data.\n\n",
+        "screenshots": [
+            "port1.png"
+        ],
+        "technologies": [
+            "HTML",
+            "TAILWINDCSS",
+            "JAVASCRIPT"
+        ],
+        "status": "Completed",
+        "category": "static-website"
     }
 ];
 
