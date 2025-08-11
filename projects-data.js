@@ -1,3 +1,4 @@
+// projects-data.js - This file stores all project data
 const projectsData = [
     {
         "id": 1754807188447,
@@ -39,6 +40,38 @@ const projectsData = [
         ],
         "status": "Completed",
         "category": "Other"
+    },
+    {
+        "id": 1754875141879,
+        "name": "RCC LOAN MANAGEMENT SYSTEM",
+        "description": "A client-based project for a microfinance institution in a remote area of Batangas, focusing on developing a web-based system to manage loan applications, track repayments, and generate financial reports, ensuring accessibility and usability even in low-connectivity environments",
+        "date": "2025-05-16",
+        "purpose": "The project aimed to provide the microfinance institution with a reliable, easy-to-use digital platform to improve how they manage loans, client records, and repayment schedules. Because the institution operates in a remote area of Batangas with limited internet access, the system was designed to work efficiently even with low connectivity. This helped staff reduce manual paperwork, minimize errors, and serve clients faster — ultimately supporting the institution’s mission of empowering the local community through accessible financial services.",
+        "screenshots": [
+            "rcc1.png",
+            "rcc2.png",
+            "rcc3.png",
+            "rcc4.png",
+            "rcc5.png",
+            "rcc6.png",
+            "rcc7.png",
+            "rcc8.png",
+            "rcc9.png",
+            "rcc10.png",
+            "rcc11.png",
+            "rcc12.png",
+            "rcc13.png"
+        ],
+        "technologies": [
+            "HTML",
+            "TAILWINDCSS",
+            "PHPMAILER",
+            "PHP",
+            "JAVASCRIPT",
+            "MYSQL"
+        ],
+        "status": "In Progress",
+        "category": "Web Development"
     }
 ];
 
