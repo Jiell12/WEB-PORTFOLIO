@@ -18,7 +18,7 @@ const projectsData = [
             "JAVASCRIPT"
         ],
         "status": "Completed",
-        "category": "Web Development"
+        "category": "static-website"
     },
     {
         "id": 1754807962064,
@@ -39,14 +39,14 @@ const projectsData = [
             "DEMUCS V4"
         ],
         "status": "Completed",
-        "category": "Other"
+        "category": "ai-project"
     },
     {
         "id": 1754875141879,
         "name": "RCC LOAN MANAGEMENT SYSTEM",
         "description": "A client-based project for a microfinance institution in a remote area of Batangas, focusing on developing a web-based system to manage loan applications, track repayments, and generate financial reports, ensuring accessibility and usability even in low-connectivity environments",
         "date": "2025-05-16",
-        "purpose": "The project aimed to provide the microfinance institution with a reliable, easy-to-use digital platform to improve how they manage loans, client records, and repayment schedules. Because the institution operates in a remote area of Batangas with limited internet access, the system was designed to work efficiently even with low connectivity. This helped staff reduce manual paperwork, minimize errors, and serve clients faster — ultimately supporting the institution’s mission of empowering the local community through accessible financial services.",
+        "purpose": "The project aimed to provide the microfinance institution with a reliable, easy-to-use digital platform to improve how they manage loans, client records, and repayment schedules. Because the institution operates in a remote area of Batangas with limited internet access, the system was designed to work efficiently even with low connectivity. This helped staff reduce manual paperwork, minimize errors, and serve clients faster — ultimately supporting the institution's mission of empowering the local community through accessible financial services.",
         "screenshots": [
             "rcc1.png",
             "rcc2.png",
@@ -71,7 +71,26 @@ const projectsData = [
             "MYSQL"
         ],
         "status": "In Progress",
-        "category": "Web Development"
+        "category": "dynamic-website"
+    },
+    {
+        "id": 1754891390417,
+        "name": "Lebron 20 \"Drew League\"",
+        "description": "I created a web advertisement for the LeBron 20 Drew League Pink sneakers to showcase their design and vibrant colorway. The ad features smooth animations and a responsive layout for an engaging experience on both desktop and mobile devices. It highlights the shoe's key features with a clean, modern style that draws attention to the product. This project demonstrates my skills in HTML, CSS animations, and JavaScript for creating dynamic, interactive web content.",
+        "date": "2023-03-20",
+        "purpose": "The purpose of this web advertisement is to effectively showcase the LeBron 20 Drew League Pink sneakers and attract potential buyers by highlighting its unique design and features. It aims to create an engaging and visually appealing experience that encourages user interaction and interest in the product.",
+        "screenshots": [
+            "lebron1.png",
+            "lebron2.png",
+            "lebron3.png"
+        ],
+        "technologies": [
+            "HTML",
+            "TAILWINDCSS",
+            "JAVASCRIPT"
+        ],
+        "status": "Completed",
+        "category": "static-website"
     }
 ];
 

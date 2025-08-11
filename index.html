@@ -37,6 +37,22 @@
             font-size: 0.75rem;
             margin: 2px;
         }
+        .category-filter {
+            transition: all 0.3s ease;
+        }
+        .category-filter.active {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .project-item {
+            transition: all 0.5s ease;
+        }
+        .project-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-black text-white min-h-screen">
@@ -60,7 +76,7 @@
         <div class="max-w-6xl mx-auto px-4 py-3">
             <div class="flex items-center justify-center space-x-2 text-sm text-gray-300">
                 <i class="fas fa-shield-alt text-red-400"></i>
-                <span>Projects are kept private for confidentiality • Explore this portfolio to discover my work • Based in Imus, Calabarzon, PH</span>
+                <span>Projects are kept private for confidentiality • Explore this portfolio to discover my work • Based in Batangas, Calabarzon, PH</span>
             </div>
         </div>
     </div>
@@ -130,6 +146,30 @@
     <section id="projects" class="py-20 bg-black">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-12">Featured <span class="text-red-500">Projects</span></h2>
+            
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProjects('all')" class="category-filter active bg-red-600/20 hover:bg-red-600 border border-red-500/30 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-layer-group mr-2"></i>All Projects
+                </button>
+                <button onclick="filterProjects('static-website')" class="category-filter bg-gray-800 hover:bg-red-600 border border-red-500/30 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-file-code mr-2"></i>Static Websites
+                </button>
+                <button onclick="filterProjects('dynamic-website')" class="category-filter bg-gray-800 hover:bg-red-600 border border-red-500/30 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-database mr-2"></i>Dynamic Websites
+                </button>
+                <button onclick="filterProjects('ai-project')" class="category-filter bg-gray-800 hover:bg-red-600 border border-red-500/30 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-brain mr-2"></i>AI Projects
+                </button>
+                <button onclick="filterProjects('mobile-app')" class="category-filter bg-gray-800 hover:bg-red-600 border border-red-500/30 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-mobile-alt mr-2"></i>Mobile Apps
+                </button>
+                <button onclick="filterProjects('ui-ux')" class="category-filter bg-gray-800 hover:bg-red-600 border border-red-500/30 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-palette mr-2"></i>UI/UX Design
+                </button>
+            </div>
+            
+            <!-- Projects Grid -->
             <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
                 <!-- Projects will be loaded here -->
             </div>
@@ -381,13 +421,14 @@
                                     </select>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="block text-sm font-semibold mb-2 text-red-400">Category</label>
-                                    <select id="projectCategory" class="w-full bg-black border border-red-900/20 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none">
-                                        <option value="Web Development">Web Development</option>
-                                        <option value="Mobile App">Mobile App</option>
-                                        <option value="UI/UX Design">UI/UX Design</option>
-                                        <option value="Full Stack">Full Stack</option>
-                                        <option value="Other">Other</option>
+                                    <label class="block text-sm font-semibold mb-2 text-red-400">Category *</label>
+                                    <select id="projectCategory" required class="w-full bg-black border border-red-900/20 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none">
+                                        <option value="static-website">Static Website</option>
+                                        <option value="dynamic-website">Dynamic Website</option>
+                                        <option value="ai-project">AI Project</option>
+                                        <option value="mobile-app">Mobile App</option>
+                                        <option value="ui-ux">UI/UX Design</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
                             </div>
@@ -494,6 +535,7 @@
         // Global Variables
         let knockCount = 0;
         let projects = [];
+        let currentFilter = 'all';
 
         // Initialize on page load
         window.onload = function() {
@@ -528,6 +570,54 @@
             setTimeout(() => {
                 if (knockCount < 5) knockCount = 0;
             }, 2000);
+        }
+
+        // Category Filter Functions
+        function filterProjects(category) {
+            currentFilter = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-filter').forEach(btn => {
+                btn.classList.remove('active', 'bg-red-600');
+                btn.classList.add('bg-gray-800');
+            });
+            
+            event.target.classList.add('active', 'bg-red-600');
+            event.target.classList.remove('bg-gray-800');
+            
+            // Filter and render projects
+            renderProjects();
+        }
+
+        function getFilteredProjects() {
+            if (currentFilter === 'all') {
+                return projects;
+            }
+            return projects.filter(project => project.category === currentFilter);
+        }
+
+        function getCategoryDisplayName(category) {
+            const categoryNames = {
+                'static-website': 'Static Website',
+                'dynamic-website': 'Dynamic Website', 
+                'ai-project': 'AI Project',
+                'mobile-app': 'Mobile App',
+                'ui-ux': 'UI/UX Design',
+                'other': 'Other'
+            };
+            return categoryNames[category] || category;
+        }
+
+        function getCategoryIcon(category) {
+            const categoryIcons = {
+                'static-website': 'fas fa-file-code',
+                'dynamic-website': 'fas fa-database',
+                'ai-project': 'fas fa-brain',
+                'mobile-app': 'fas fa-mobile-alt',
+                'ui-ux': 'fas fa-palette',
+                'other': 'fas fa-cog'
+            };
+            return categoryIcons[category] || 'fas fa-cog';
         }
 
         // Modal Management
@@ -608,7 +698,9 @@
 
         function renderProjects() {
             const projectsGrid = document.getElementById('projectsGrid');
-            console.log('Rendering projects, count:', projects.length);
+            const filteredProjects = getFilteredProjects();
+            
+            console.log('Rendering projects, total:', projects.length, 'filtered:', filteredProjects.length);
             
             if (!projects || projects.length === 0) {
                 projectsGrid.innerHTML = `
@@ -625,8 +717,23 @@
                 return;
             }
 
-            projectsGrid.innerHTML = projects.map(project => `
-                <div class="bg-gray-900 rounded-xl border border-red-900/20 overflow-hidden card-hover cursor-pointer" onclick="showProjectDetail(${project.id})">
+            if (filteredProjects.length === 0 && currentFilter !== 'all') {
+                projectsGrid.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <i class="${getCategoryIcon(currentFilter)} text-6xl text-red-500 mb-6 opacity-50"></i>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-400">No ${getCategoryDisplayName(currentFilter)} Projects</h3>
+                        <p class="text-gray-500 mb-8">No projects found in this category yet</p>
+                        <button onclick="filterProjects('all')" class="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg transition-colors">
+                            View All Projects
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            projectsGrid.innerHTML = filteredProjects.map(project => `
+                <div class="project-item bg-gray-900 rounded-xl border border-red-900/20 overflow-hidden card-hover cursor-pointer" 
+                     onclick="showProjectDetail(${project.id})" data-category="${project.category}">
                     <div class="relative h-48 bg-black">
                         ${project.screenshots && project.screenshots.length > 0 ? 
                             `<img src="screenshots/${project.screenshots[0]}" alt="${project.name}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center\\'><i class=\\'fas fa-image text-4xl text-red-500 opacity-30\\'></i></div>'">` :
@@ -642,8 +749,9 @@
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-2">
                             <h3 class="text-xl font-bold text-red-400">${project.name}</h3>
-                            <span class="text-xs bg-red-900/30 text-red-300 px-2 py-1 rounded">
-                                ${project.category || 'Web Development'}
+                            <span class="text-xs bg-red-900/30 text-red-300 px-2 py-1 rounded flex items-center">
+                                <i class="${getCategoryIcon(project.category)} mr-1"></i>
+                                ${getCategoryDisplayName(project.category)}
                             </span>
                         </div>
                         <p class="text-gray-400 text-sm mb-3 line-clamp-2">${project.description}</p>
@@ -704,7 +812,10 @@
                         </div>
                         <div class="text-center p-4 bg-black rounded-lg border border-red-900/20">
                             <div class="text-red-400 font-semibold">Category</div>
-                            <div class="text-white">${project.category || 'Web Development'}</div>
+                            <div class="text-white flex items-center justify-center">
+                                <i class="${getCategoryIcon(project.category)} mr-2"></i>
+                                ${getCategoryDisplayName(project.category)}
+                            </div>
                         </div>
                         <div class="text-center p-4 bg-black rounded-lg border border-red-900/20">
                             <div class="text-red-400 font-semibold">Created</div>
